@@ -9,9 +9,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
@@ -33,10 +34,9 @@ filetype plugin indent on    " required
 syntax on
 set background=dark
 color solarized
-set lines=50 columns=80
+set lines=30 columns=120
 
 map <F2> :NERDTreeToggle<CR>
 imap jj <Esc>
 set tabstop=4 shiftwidth=4 expandtab
 set number
-

@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="eastwood"
+ZSH_THEME="ducknorris"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -80,3 +80,27 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+function powerline_precmd() {
+  export PS1="$(/Users/stephensaw/.oh-my-zsh/plugins/powerline/powerline-shell.py $? --shell zsh 2> /dev/null)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+install_powerline_precmd
+
+POWERLINE_DETECT_SSH="true"
+POWERLINE_GIT_CLEAN="✔"
+POWERLINE_GIT_DIRTY="✘"
+POWERLINE_GIT_ADDED="%F{green}✚%F{black}"
+POWERLINE_GIT_MODIFIED="%F{blue}✹%F{black}"
+POWERLINE_GIT_DELETED="%F{red}✖%F{black}"
